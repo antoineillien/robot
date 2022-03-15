@@ -1,0 +1,11 @@
+#! /bin/bash
+./DCMotor 1.8 0.02 0.005 0.025 5e-5 6e-6 0.01 L & 
+sleep 1 
+./DCMotor 1.8 0.02 0.005 0.025 5e-5 6e-6 0.01 R &
+sleep 1
+./RegPID 0.02 16 0 0.01 L & 
+sleep 1
+./RegPID 0.02 16 0 0.01 R &
+sleep 1
+./Kinematics 0.1 0.4 0.01 & 
+
