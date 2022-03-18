@@ -16,6 +16,7 @@
 #include <errno.h>
 #include <sys/mman.h>
 #include <sys/time.h>
+
 /*............*/
 /* constantes */
 /*............*/
@@ -140,6 +141,7 @@ void updateVelocity( void )
     Vc = 0.5 * R0 * (wL + wR);
     Wc = (R0/w) * (wR - wL);
     /*_________________________________________________________________*/
+
 #if defined(USR_DBG)²
     if( (iCount % REFRESH_RATE) == 0 )
     {
@@ -147,6 +149,7 @@ void updateVelocity( void )
     };
      iCount++;
 #endif
+
     /*_________________________________________________________________*/
     /* mise a jour */
     lpdb_vel[OFFSET_VC] = Vc;
@@ -188,6 +191,9 @@ int main( int argc, char *argv[])
     /*............................*/
     /* recuperation des arguments */
     /*............................*/
+
+
+   
     if( sscanf(argv[1],"%lf",&R0) == 0 )
     {
         fprintf(stderr,"%s.main()  : ERREUR ---> l'argument #1 doit etre reel\n", argv[0]);
@@ -206,9 +212,11 @@ int main( int argc, char *argv[])
         usage(argv[0]);
         return( 0 );
     };
+
     /*................................................*/
     /* lien / creation aux zones de memoire partagees */
     /*................................................*/
+
     if( (lpdb_stateL = (double *)(Link2SharedMem(STATE_L, 2 * sizeof(double), &iFdStateL, 1 ))) == NULL )
     {
         fprintf(stderr,"%s.main()  : ERREUR ---> appel a Link2SharedMem() #1\n", argv[0]);
@@ -224,6 +232,7 @@ int main( int argc, char *argv[])
         fprintf(stderr,"%s.main()  : ERREUR ---> appel a Link2SharedMem() #3\n", argv[0]);
         return( 0 );
     };
+
     lpdb_wL  = &lpdb_stateL[OFFSET_W];
     lpdb_wR  = &lpdb_stateR[OFFSET_W];
     /*.................*/
@@ -268,7 +277,7 @@ int main( int argc, char *argv[])
 #if defined(USR_DBG)
         if( (iLoops % (int)(REFRESH_RATE)) == 0)
         {
-            printf("Vc = %lf Wc = %lf \n", lpdb_vel[0], lpdb_vel[1]);
+           printf("Vc = %lf Wc = %lf \n", lpdb_vel[0], lpdb_vel[1]); 
         };
         iLoops++;
 #endif
