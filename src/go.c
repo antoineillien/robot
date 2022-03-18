@@ -9,7 +9,9 @@ Il va donc avancer de d*cos(theta) sur X, et d*sin(theta) sur Y
 le robot est à l'arrêt quand il reçoit la commande, 
 le robot s'arrête à l'instant où il ne reçoit plus de commande
 
-Il faudrait introduire la notion d'erreur et de correction pour plus de précision 
+Il faudrait introduire la notion d'erreur et de correction pour plus de précision. 
+
+Il faut que je comprenne comment est gérée la notion de distance
 
 
 **/
